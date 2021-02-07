@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<script>
+
+    function computerPlay(){
+
+        let randNumber = Math.floor(Math.random() * 3); 
+
+        switch(randNumber){
+            case 0: 
+                return "paper";
+                break;
+            case 1:
+                return "rock";
+                break;
+            case 2:
+                return "scissors"
+                break;
+        }
+    }
+
+    function playRound(playerSelection, computerSelection){
+
+        let playerSel = playerSelection.toLowerCase();
+
+        switch(computerSelection){
+            case "paper":
+
+                if(playerSelection === "paper")
+                    return "Tie"
+                else if(playerSelection === "rock")
+                    return "Paper beats rock. You lost!"
+                else if(playerSelection === "scissors")
+                    return "Scissors beat paper. You won!"
+                break;
+            
+            case "rock":
+
+                if(playerSelection === "paper")
+                    return "Paper beats rock. You won!"
+                else if(playerSelection === "rock")
+                    return "Tie"
+                else if(playerSelection === "scissors")
+                    return "Rock beats scissors. You lost!"
+                break;
+            
+                case "scissors":
+
+                    if(playerSelection === "paper")
+                        return "Scissors beat paper. You lost!"
+                    else if(playerSelection === "rock")
+                        return "Rock bears scissors. You won!"
+                    else if(playerSelection === "scissors")
+                        return "Tie"
+                    break;
+        }
+
+
+
+    }
+
+</script>
