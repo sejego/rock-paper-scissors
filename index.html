@@ -7,15 +7,27 @@
             <p class="game-text-style">Press <b>Play</b> to begin the game!<p>
     </head>
     <body>
+        <div class="container-rps container-rps-player">
+            <img id="rock-player" src="images/Rock.png" alt="Fist">
+            <img id="paper-player" src="images/Paper.png" alt="Open hand palm">
+            <img id="scissors-player" src="images/Scissors.png" alt="Scissors hand">
+        </div>
+        <div id="win-parent-div">
+            <div id="win-counter-box">
+                    <div>Player</div>
+                    <div>Computer</div>
+                    <div id="score-player">0</div>
+                    <div id="score-computer">0</div>
+            </div>
+    </div>
 
-        <div class="container">
-            <img id="rock" src="images/Rock.png" alt="Fist">
-            <img id="paper" src="images/Paper.png" alt="Open hand palm">
-            <img id="scissors" src="images/Scissors.png" alt="Scissors hand">
+        <div class="container-rps container-rps-computer">
+            <img id="rock-computer" src="images/Rock.png" alt="Fist">
+            <img id="paper-computer" src="images/Paper.png" alt="Open hand palm">
+            <img id="scissors-computer" src="images/Scissors.png" alt="Scissors hand">
         </div>
 
     </body>
 </html>
-<!--
-<script type = "text/javascript" src="game.js"></script>
--->
+
+<script type = "text/javascript" src="js/game.js"></script>

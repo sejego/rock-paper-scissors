@@ -1,10 +1,32 @@
-    
+const boxChoice = document.getElementsByTagName("img");
+const topText = document.getElementsByClassName("game-text-style");
+
 var i = 0;
 var computerScore = 0;
 var playerScore = 0;
+
+function hideOtherPlayerCards(e)
+{
+    console.log(e.target.id);
+    for(i=0;i<3;i++)
+    {
+        if(boxChoice[i].id != e.target.id)
+            boxChoice[i].style.display = 'none';           
+    }
+    e.target.classList.add('active');
+
+}
+// hide computer's choice
+for(i=3;i <6; i++){
+    boxChoice[i].style.display = "none";
+}
+
+for(i=0;i<3;i++){
+    boxChoice[i].addEventListener('click', hideOtherPlayerCards);
+}
+/*
 while(i < 5){
-    let choice = (prompt("COMPUTER "+computerScore+" - "+playerScore+" PLAYER"+"\nMake your choice!")).toLowerCase();
-    if(choice === "rock" || choice === "paper" || choice === "scissors")
+    if(choice == "rock-player" || choice == "paper-player" || choice == "scissors-player")
     {
         let computerChoice = computerPlay();
         alert(playRound(choice, computerChoice));
@@ -92,3 +114,4 @@ else
                 break;
         }
     }
+    */
