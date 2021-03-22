@@ -1,0 +1,17 @@
+img{
+    border-radius: 10%;
+    width: 17%;
+}
+html{
+    background: #56CCF2;
+    background-image: url("/rock-paper-scissors/images/bcr6.png");
+}
+.game-text-style{
+    text-align: center;
+    font-family:'DM Mono, Georgia, serif';
+    font-size: 25px;
+}
+.container{
+    display: flex;
+    justify-content:space-evenly;
+}

@@ -1,61 +1,21 @@
 <!DOCTYPE html>
-<script>
-
-    function computerPlay(){
-
-        let randNumber = Math.floor(Math.random() * 3); 
-
-        switch(randNumber){
-            case 0: 
-                return "paper";
-                break;
-            case 1:
-                return "rock";
-                break;
-            case 2:
-                return "scissors"
-                break;
-        }
-    }
-
-    function playRound(playerSelection, computerSelection){
-
-        let playerSel = playerSelection.toLowerCase();
-
-        switch(computerSelection){
-            case "paper":
-
-                if(playerSelection === "paper")
-                    return "Tie"
-                else if(playerSelection === "rock")
-                    return "Paper beats rock. You lost!"
-                else if(playerSelection === "scissors")
-                    return "Scissors beat paper. You won!"
-                break;
+<html>
+    <head>
+            <link href="css/reset.css" rel="stylesheet" type="text/css" media="all">
+            <link href="css/main.css" rel="stylesheet" type="text/css" media="all">
             
-            case "rock":
+            <p class="game-text-style">Press <b>Play</b> to begin the game!<p>
+    </head>
+    <body>
 
-                if(playerSelection === "paper")
-                    return "Paper beats rock. You won!"
-                else if(playerSelection === "rock")
-                    return "Tie"
-                else if(playerSelection === "scissors")
-                    return "Rock beats scissors. You lost!"
-                break;
-            
-                case "scissors":
+        <div class="container">
+            <img id="rock" src="images/Rock.png" alt="Fist">
+            <img id="paper" src="images/Paper.png" alt="Open hand palm">
+            <img id="scissors" src="images/Scissors.png" alt="Scissors hand">
+        </div>
 
-                    if(playerSelection === "paper")
-                        return "Scissors beat paper. You lost!"
-                    else if(playerSelection === "rock")
-                        return "Rock bears scissors. You won!"
-                    else if(playerSelection === "scissors")
-                        return "Tie"
-                    break;
-        }
-
-
-
-    }
-
-</script>
+    </body>
+</html>
+<!--
+<script type = "text/javascript" src="game.js"></script>
+-->
