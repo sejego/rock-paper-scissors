@@ -1,117 +1,138 @@
 const boxChoice = document.getElementsByTagName("img");
 const topText = document.getElementsByClassName("game-text-style");
+const scoreDisplayComputer = document.getElementById("score-computer");
+const scoreDisplayPlayer = document.getElementById("score-player");
+const playButton = document.getElementById("btn-txt");
 
 var i = 0;
 var computerScore = 0;
 var playerScore = 0;
+var playerChoice;
+var computerChoice;
+
+playButton.firstChild.addEventListener('click', );
+
+function play(){
+
+    for(i=0;i<3;i++){
+        boxChoice[i].addEventListener('click', hideOtherPlayerCards);
+    }
+
+    function playRound()
+    {
+        computerChoice = computerPlay();
+        showComputerCard(computerChoice);
+
+        switch(computerChoice){
+            case "paper-computer":
+
+                if(playerChoice === "paper-player")
+                    topText[0].textContent = "Tie" ;
+                else if(playerChoice === "rock-player")
+                {
+                    computerScore++;
+                    topText[0].textContent = "Paper beats rock. You lost!";
+                }
+                else if(playerChoice === "scissors-player")
+                {
+                    playerScore++;
+                    topText[0].textContent = "Scissors beat paper. You won!";
+                }
+                break;
+            
+            case "rock-computer":
+
+                if(playerChoice === "paper-player")
+                {
+                    playerScore++;
+                    topText[0].textContent = "Paper beats rock. You won!";
+                }
+                else if(playerChoice === "rock-player")
+                    topText[0].textContent = "Tie";
+                else if(playerChoice === "scissors-player")
+                {
+                    computerScore++;
+                    topText[0].textContent = "Rock beats scissors. You lost!";
+                }
+                break;
+            
+            case "scissors-computer":
+
+                if(playerChoice === "paper-player")
+                {
+                    computerScore++;
+                    topText[0].textContent = "Scissors beat paper. You lost!";
+                }
+                else if(playerChoice === "rock-player")
+                {
+                    playerScore++;
+                    topText[0].textContent = "Rock bears scissors. You won!";
+                }
+                else if(playerChoice === "scissors-player")
+                    topText[0].textContent = "Tie";
+                break;
+        }
+        scoreDisplayComputer.textContent = `${computerScore}`;
+        scoreDisplayPlayer.textContent = `${playerScore}`;
+    }
+}
+
+function computerPlay(){
+
+    let randNumber = Math.floor(Math.random() * 3); 
+    switch(randNumber){
+        case 0: 
+            return "paper-computer";
+        case 1:
+            return "rock-computer";
+        case 2:
+            return "scissors-computer"
+    }
+}
+
 
 function hideOtherPlayerCards(e)
 {
     console.log(e.target.id);
+    playerChoice = e.target.id;
     for(i=0;i<3;i++)
     {
         if(boxChoice[i].id != e.target.id)
-            boxChoice[i].style.display = 'none';           
+            boxChoice[i].style.display = 'none';          
     }
     e.target.classList.add('active');
-
+    playRound();
 }
-// hide computer's choice
-for(i=3;i <6; i++){
-    boxChoice[i].style.display = "none";
-}
-
-for(i=0;i<3;i++){
-    boxChoice[i].addEventListener('click', hideOtherPlayerCards);
-}
-/*
-while(i < 5){
-    if(choice == "rock-player" || choice == "paper-player" || choice == "scissors-player")
+function showComputerCard(cardName)
+{
+    for(i=3; i<6; i++)
     {
-        let computerChoice = computerPlay();
-        alert(playRound(choice, computerChoice));
-        i++;
-    }
-    else{
-        alert("Invalid input. Try again typing rock, paper or scissors");
+        if(boxChoice[i].id == cardName)
+            boxChoice[i].style.display = 'block';
+            boxChoice[i].style.border = "4px solid red";
     }
 }
-if(computerScore>playerScore)
-    alert("Computer has won! Give it one more try!");
-else if(playerScore>computerScore)
-    alert("You won! Congratulations! Play one more?");
-else
-    alert("It is a tie! Play again to show who is the boss!");
 
-    function computerPlay(){
-
-        let randNumber = Math.floor(Math.random() * 3); 
-
-        switch(randNumber){
-            case 0: 
-                return "paper";
-                break;
-            case 1:
-                return "rock";
-                break;
-            case 2:
-                return "scissors"
-                break;
-        }
+function showAllPlayerCards()
+{
+    for(i=0; i<3; i++)
+    {
+        boxChoice[i].style.display = 'block';
     }
+}
 
-    function playRound(playerSel, computerSelection){
-
-        let playerSelection = playerSel.toLowerCase();
-
-        switch(computerSelection){
-            case "paper":
-
-                if(playerSelection === "paper")
-                    return "Tie";
-                else if(playerSelection === "rock")
-                {
-                    computerScore++;
-                    return "Paper beats rock. You lost!";
-                }
-                else if(playerSelection === "scissors")
-                {
-                    playerScore++;
-                    return "Scissors beat paper. You won!";
-                }
-                break;
-            
-            case "rock":
-
-                if(playerSelection === "paper")
-                {
-                    playerScore++;
-                    return "Paper beats rock. You won!";
-                }
-                else if(playerSelection === "rock")
-                    return "Tie";
-                else if(playerSelection === "scissors")
-                {
-                    computerScore++;
-                    return "Rock beats scissors. You lost!";
-                }
-                break;
-            
-            case "scissors":
-
-                if(playerSelection === "paper")
-                {
-                    computerScore++;
-                    return "Scissors beat paper. You lost!";
-                }
-                else if(playerSelection === "rock")
-                {
-                    playerScore++;
-                    return "Rock bears scissors. You won!";
-                }
-                else if(playerSelection === "scissors")
-                    return "Tie";
-                break;
-        }
+function hideComputerCards()
+{
+    // hide computer's choice
+    for(i=3;i <6; i++){
+        boxChoice[i].style.display = "none";
     }
-    */
+}
+
+function resetRound()
+{
+    showAllPlayerCards();
+    hideComputerCards();
+    playerChoice = "";
+    computerChoice = "";
+}
