@@ -1,17 +1,23 @@
+/* Here I get all the DOM objects to work with later on */
 const boxChoice = document.getElementsByTagName("img");
 const topText = document.getElementsByClassName("game-text-style");
 const scoreDisplayComputer = document.getElementById("score-computer");
 const scoreDisplayPlayer = document.getElementById("score-player");
 const playButton = document.getElementById("btn-txt");
 
-var i = 0;
+/* Here all global variables are declared */ 
 var computerScore = 0;
 var playerScore = 0;
 var playerChoice;
 var computerChoice;
 
+/* To initiate the game, I hide all the boxes (or cards) containing 
+   the choices for the player and the computer. The game starts when the PLAY button is pressed */
+
 hideAllCards();
 playButton.addEventListener('click', play);
+
+/* Button for the round is hidden */
 
 function play(e){
     e.target.textContent = "REPLAY"
@@ -19,6 +25,11 @@ function play(e){
     e.target.style.backgroundColor = "transparent";
     console.log(e);
     resetRound();
+
+    /* For every player box I create an event listener for click. After event is fired,
+    The round is played and the random function generates random choice by computer
+    Then, the corresponding card appear on the computer side of the screen. */
+
     for(i=0;i<3;i++){
         boxChoice[i].addEventListener('click', hideOtherPlayerCards);
     }
@@ -78,6 +89,9 @@ function play(e){
                     topText[0].textContent = "Tie";
                 break;
         }
+
+        /* Scores are updated at the end of the round and the button becomes visible again. */
+
         scoreDisplayComputer.textContent = `${computerScore}`;
         scoreDisplayPlayer.textContent = `${playerScore}`;
         playButton.style.visibility = "visible";
@@ -131,14 +145,12 @@ function showAllPlayerCards()
 
 function hideComputerCards()
 {
-    // hide computer's choice
     for(i=3;i <6; i++){
         boxChoice[i].style.display = "none";
     }
 }
 function hideAllCards()
 {
-    // hide computer's choice
     for(i=0;i <6; i++){
         boxChoice[i].style.display = "none";
     }
