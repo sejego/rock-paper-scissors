@@ -2,7 +2,7 @@ const boxChoice = document.getElementsByTagName("img");
 const topText = document.getElementsByClassName("game-text-style");
 const scoreDisplayComputer = document.getElementById("score-computer");
 const scoreDisplayPlayer = document.getElementById("score-player");
-const playButton = document.getElementById("btn-txt");
+//const playButton = document.getElementById("btn-txt");
 
 var i = 0;
 var computerScore = 0;
@@ -10,10 +10,10 @@ var playerScore = 0;
 var playerChoice;
 var computerChoice;
 
-playButton.firstChild.addEventListener('click', );
+// playButton.firstChild.addEventListener('click', );
 
-function play(){
 
+    resetRound();
     for(i=0;i<3;i++){
         boxChoice[i].addEventListener('click', hideOtherPlayerCards);
     }
@@ -75,7 +75,7 @@ function play(){
         scoreDisplayComputer.textContent = `${computerScore}`;
         scoreDisplayPlayer.textContent = `${playerScore}`;
     }
-}
+
 
 function computerPlay(){
 
