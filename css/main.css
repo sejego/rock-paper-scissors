@@ -64,7 +64,7 @@ html{
     justify-content: space-evenly;
     font-size: 18px;
   }
-/*
+
 #button-box{
     width: 300px;
     display: flex;
@@ -84,8 +84,8 @@ html{
     background-color: turquoise;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     cursor: default;
+    visibility: visible;
 }
 #button-box :first-child :hover{
     border: 2px solid red;
 }
-*/

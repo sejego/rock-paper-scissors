@@ -2,7 +2,7 @@ const boxChoice = document.getElementsByTagName("img");
 const topText = document.getElementsByClassName("game-text-style");
 const scoreDisplayComputer = document.getElementById("score-computer");
 const scoreDisplayPlayer = document.getElementById("score-player");
-//const playButton = document.getElementById("btn-txt");
+const playButton = document.getElementById("btn-txt");
 
 var i = 0;
 var computerScore = 0;
@@ -10,13 +10,19 @@ var playerScore = 0;
 var playerChoice;
 var computerChoice;
 
-// playButton.firstChild.addEventListener('click', );
+hideAllCards();
+playButton.addEventListener('click', play);
 
-
+function play(e){
+    e.target.textContent = "REPLAY"
+    e.target.style.visibility = "hidden";
+    e.target.style.backgroundColor = "transparent";
+    console.log(e);
     resetRound();
     for(i=0;i<3;i++){
         boxChoice[i].addEventListener('click', hideOtherPlayerCards);
     }
+}
 
     function playRound()
     {
@@ -74,6 +80,8 @@ var computerChoice;
         }
         scoreDisplayComputer.textContent = `${computerScore}`;
         scoreDisplayPlayer.textContent = `${playerScore}`;
+        playButton.style.visibility = "visible";
+        playButton.style.backgroundColor = "turquoise";
     }
 
 
@@ -128,11 +136,21 @@ function hideComputerCards()
         boxChoice[i].style.display = "none";
     }
 }
-
+function hideAllCards()
+{
+    // hide computer's choice
+    for(i=0;i <6; i++){
+        boxChoice[i].style.display = "none";
+    }
+}
 function resetRound()
 {
     showAllPlayerCards();
     hideComputerCards();
     playerChoice = "";
     computerChoice = "";
+    for(i=0;i<6;i++)
+    {
+        boxChoice[i].style.border = "4px solid transparent";
+    }
 }
